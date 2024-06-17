@@ -1,0 +1,44 @@
+Blocks is an entity which combines multiple javascript statements into  a group, hence block is also called as compound statement.
+we use block so that multiple statements can be used in a place where javascript expects a single statement.
+
+Block scope: list of variables and functions which can be accessed isndie a block.
+
+consider the following code:
+
+{
+    var a = 10;
+    let b = 20;
+    const c = 30;
+}
+
+here, 'a' is attached to global emmory space or global scope and 'b' and 'c' are attached to block scope(sepearte memory component reserved for that block only) of the block in which they are declared. Also, var a is accessible outside of the block unlike other two.
+hence, var is global scoped and let,const are block scoped.
+
+
+Shadowing:
+In JavaScript, "shadowing" refers to a situation where a variable declared in a more localized scope (such as within a function or block) has the same name as a variable declared in a higher, outer scope (such as a global variable or a variable in an enclosing function). When this happens, the inner variable "shadows" or takes precedence over the outer variable within its scope, effectively hiding the outer variable from that scope.
+
+Here's a simple example to illustrate shadowing:
+
+let x = 10; // This is a global variable
+
+function example() {
+  let x = 20; // This is a local variable, shadowing the global 'x' within this function
+  console.log(x); // Prints 20
+}
+example();
+console.log(x); // Prints 10 because we're outside the 'example' function's scope
+
+Also, "let" can be used to shadow "var" variable but not vice versa that is called illegal shadowing.
+so, let can shadow let
+    let can shadow var
+    var can shadow var
+    var cannot shadow let
+    
+illegal shadowing:
+let a = 35;
+
+{
+    var a = 24;
+    console.log(a);
+} it will give refernce error, saying "a" is already declared

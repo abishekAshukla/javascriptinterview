@@ -1,0 +1,25 @@
+javascript will execute callbacks in the call back queue only after completion of call stack functions. Hence, it is possible that in case of setTimeOut(), it takes more time to execute it than speciifed.
+
+ When you use setTimeout, the provided callback function is placed in the callback queue after the specified delay. However, it doesn't guarantee immediate execution after that time elapses.
+
+If the call stack is busy with synchronous tasks, the callback in the queue waits for the stack to clear before it's executed. So, if there's a time-consuming operation in the call stack or if the call stack is occupied with other functions, the callback might experience a delay in execution even after the specified time has passed.
+
+example code:
+
+function delay(milliseconds) {
+  const startTime = new Date().getTime();
+  let currentTime = startTime;
+  while (currentTime - startTime < milliseconds) {
+    currentTime = new Date().getTime();
+  }
+}
+
+console.log('Start');
+setTimeout(() => {
+  console.log('Timeout callback executed after 5 seconds');
+}, 2000);
+
+delay(5000); // Delay for 5 seconds
+console.log('End');
+
+callback is executed after 5 seconds even when 2 seconds was specified for it

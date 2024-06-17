@@ -1,0 +1,4 @@
+How javascript functions work
+
+this is already related to execution context concept, so just go through the below video with fast speed:
+https://www.youtube.com/watch?v=gSDncyuGw0s&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=5

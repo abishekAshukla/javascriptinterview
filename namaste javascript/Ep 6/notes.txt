@@ -1,0 +1,3 @@
+undefined is just a special keyword which is used as placeholder to indicate that a value has not been assigned to variable yet.
+
+var a = undefined : this is not a good practice since 'undefined' is meant for a specific purpose that is to indicate variables which are not assigned with any value.

@@ -1,0 +1,24 @@
+1. javascript is single threaded and synchronous language
+
+JavaScript is often described as a "synchronous, single-threaded" language, which means that it executes code one instruction at a time in a single sequence, and it doesn't perform multiple tasks simultaneously in the same thread. Let's break down what this means:
+
+Single-Threaded: JavaScript runs in a single thread, which is also known as the "main thread." This means that it has only one call stack, which is a data structure used to keep track of function calls and their execution context. When a JavaScript program runs, it processes one operation or function call at a time, and it moves on to the next operation only when the current one is completed.
+
+Synchronous: JavaScript code is typically executed in a synchronous manner, which means that it follows a strict, top-down, and blocking execution pattern. When a function is called, the program waits for that function to finish executing before moving on to the next line of code. This synchronous behavior is sometimes called "blocking," as it can block the execution of other code until the current operation is completed.
+
+Inshort: single threaded: it executes one instruction at a time
+        synchronous: follows a particular sequence(top-down) for executing the instructions,
+
+
+2. Everything in javascript happens inside an execuiton context
+
+In JavaScript, an "execution context" refers to the environment in which a piece of code is executed.
+There are two components inside it:
+1. Memory componenets also known as variable environment: it contains all the varibles and functions are stored with their current values as key value pairs.
+2. Code component also known as thread of execuiton: this is where the actucal code is executed in a sequence. The thread of execution represents the actual sequence of code execution within a particular execution context.
+
+Questions:
+1. what is call stack?
+2. what is execution context?
+3. how javascript code is executed?
+4. why javascript is called synchrounous-single threaded?

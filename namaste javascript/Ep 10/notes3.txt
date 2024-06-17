@@ -1,0 +1,13 @@
+one difference between let and var is, var is scoped to its nearest function block hence called function scoped whereas let is scoped to its nearest block (condiiotnal sttaements, loops and any block) hence called block scoped.
+
+example:
+function random(){
+  {
+    let name = "abhi";
+  }
+  console.log(name);
+}
+
+random();
+
+here, it will give reference error in case of let.

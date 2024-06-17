@@ -1,0 +1,149 @@
+Q.1: What is a closure in javascript??
+A clousre is a bundle or combination of function along with reference to it's lexical scope(outer environment).
+Meaning that a functions has access to the varibles and fucntions of it's parents.
+Even when this funciton is executed outside of its scope, it still retains or remembers its lexical environemtn where it was originally present in the code.
+
+example:
+function outer(){
+    var a = 10;
+    function inner(){
+        console.log(a);
+    }
+    return inner;
+}
+
+outer()();
+
+Here, when we call inner() we still have access to 'a'
+
+Q.2: Double paranthesis
+Here in this code, double parenthisis is used to call the inner funciton.
+outer() is equivalent to following:
+const close = outer();
+close();
+
+Q.3: 
+function outer(){
+    function inner(){
+        console.log(a);
+    }
+    var a = 10;
+    return inner;
+}
+outer()();
+Will this still form a clousure?
+Yes it will still form a closure, closure if formed with the whole outer environemnt and not in any particular sequence.
+Also, a clusure is formed with let and const, it works same way as of var.
+Parameters of outer function are also part of lexical enironment of inner(), so inner() will have access to the paramters of outer().
+
+Q.4: closures in nested functions
+
+function outest(){
+    var a = 10;
+    function outer(){
+        function inner(){
+         console.log(a);
+          }
+    return inner;
+    }
+    return outer;
+}
+
+outest()()();
+
+so, the inner() have access to the varibles declared in the outest()
+Explain scope chain here.
+
+Q.5: Advantages of closures: Data hinding(Encapsulation)
+Explain data hiding:
+
+var count = 0;
+function incrementCounter(){
+    count++;
+}
+
+suppose we want that only incrementCounter() shall have access to count var and not any other part of the code.
+for that we can do the following:
+
+function counter(){
+    var count = 0;
+    return function incrementCounter(){
+    counter++;
+    }
+}
+
+let counter1 = counter();
+counter1();
+counter1();
+
+So, now count var is not accessible outside of counter funcition because it is limited to it scope, count var and incrementCount() are encapsulated within the function's scope and not accessible from the outside. but using counter() we can indirectly access it.
+
+Also, it promotes reusabilty, we can create multiple counters using same closure.
+
+const counter1 = createCounter();
+const counter2 = createCounter();
+
+We create two counter instances, counter1 and counter2. Each instance maintains its own private count variable, ensuring that changes to one counter do not affect the other.
+
+More optimized version of code using constructor function:
+constructor funcitons are prefferred for data encapsulation.
+function Counter() {
+  let count = 0;
+
+  this.increment = function () {
+    count++;
+  };
+
+  this.decrement = function () {
+    count--;
+  };
+
+  this.getCount = function () {
+    return count;
+  };
+}
+
+Q.6: what is garbage collector?
+Garbage collector: 
+The garbage collector in JavaScript is responsible for automatically reclaiming memory that is no longer in use by the program. It identifies and removes objects that are no longer accessible, freeing up memory resources. 
+So whenever there are unused entities in program, garbage collector removes it from memory. In low level languages this is done by developers itself but in high level languages such as javascript, this work is done by the garbage collector.
+
+Example:
+// Create an object
+let obj1 = { name: "Object 1" };
+
+// Create a reference to obj1
+let obj2 = obj1;
+
+// Remove the reference to obj1
+obj1 = null;
+
+// Now, obj1 is no longer accessible, but obj2 still references the object
+
+// ...
+
+// At some point, the garbage collector will identify that obj1 is no longer reachable and free up its memory
+
+// You don't have to explicitly manage memory; the garbage collector takes care of this.
+
+Q.7: relation between garbage collector and closures: disadvantage of closures?
+Closures can lead to increased memory usage, especially when functions within closures hold references to variables and objects. If closures are used extensively, it can lead to higher memory consumption, potentially causing performance issues, particularly in long-running applications.
+
+function counter(){
+    var count = 0;
+    return function incrementCounter(){
+    counter++;
+    }
+}
+
+let counter1 = counter();
+counter1();
+
+here, since counter() forms a closure with tis lexical environment, count var cannot get free by garbage collector. hence if we use closures extensively this can lead to performance issues due to over memory consumpiton.
+
+
+
+
+
+
+

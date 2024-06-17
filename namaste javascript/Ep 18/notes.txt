@@ -1,0 +1,31 @@
+Higher order functions are functions which takes oher functions as argumnets or returns a function from it.
+These are used to promote reusability in the code.
+Example:
+
+// A higher-order function that performs an operation on each element of an array
+function operateOnArray(arr, operation) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(operation(arr[i]));
+  }
+  return result;
+}
+
+//following are callback functions
+// Example operations
+function square(num) {
+  return num * num;
+}
+
+function double(num) {
+  return num * 2;
+}
+
+const numbers = [1, 2, 3, 4];
+
+// Using the higher-order function with different operations
+const squaredNumbers = operateOnArray(numbers, square);
+console.log('Squared numbers:', squaredNumbers); // [1, 4, 9, 16]
+
+const doubledNumbers = operateOnArray(numbers, double);
+console.log('Doubled numbers:', doubledNumbers); // [2, 4, 6, 8]

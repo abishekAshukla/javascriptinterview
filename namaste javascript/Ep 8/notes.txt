@@ -1,0 +1,47 @@
+let and const declarations are hoisted(present in memory even before code execution) but behaves differenly as compared to var.
+
+var variables are attached to global object that is window, but in case of let and const, it is not attached to a global object they are stored in a seperate memory component not in global space, which allows to access the varibles only when it has been initialized. so, let and const variables are not present in window object.
+
+Also, let does not support redeclarations of same variable unlike var.
+
+temporal dead zone: time difference between when the declaration and initilization of a value to it.
+we cannot access a variable which is in it's temporal dead zone. it will give a refernce error.
+
+so, even though let and const are hoisted but still they are not accessible if they are in temporal dead zone.
+
+Errors in javascript:
+1. syntax error:  A syntax error occurs when code violates the rules and structure of the JavaScript language, making it impossible for the interpreter to understand. in javascript, when there is a syntax error, the whole code gets terminated and no intruction is executed.
+
+2. refernce error: when we try to access a element which is not present in the memory space or scope.
+
+3. type error:
+ A type error occurs when you perform an operation on a value of the wrong type, preventing the code from running correctly
+ Example:
+ var num = "Hello";
+ num.toFixed(2); // TypeError: num.toFixed is not a function
+
+
+ Polished version:
+
+Variable Declarations (let, const, var):
+let and const declarations are hoisted, which means they exist in memory before code execution, but they have different behaviors compared to var.
+Unlike var, which attaches variables to the global memory space (window in a browser), let and const are attached to a different memory space. They are only accessible after they have been initialized, preventing them from becoming properties of the window object.
+let does not support redeclarations of the same variable within the same scope.
+
+Temporal Dead Zone (TDZ):
+The Temporal Dead Zone is the time between the declaration and initialization of a value. During this period, accessing a variable will result in a reference error.
+Variables in the Temporal Dead Zone cannot be accessed or used until they are initialized.
+Errors in JavaScript:
+
+Syntax Error:
+A syntax error occurs when code violates the rules and structure of the JavaScript language, rendering it incomprehensible to the interpreter.
+In JavaScript, a syntax error leads to the termination of the entire code execution, with no instructions being executed.
+Reference Error:
+
+A reference error occurs when an attempt is made to access an element (variable or function) that does not exist in the current memory space or scope.
+Type Error:
+
+A type error occurs when an operation is performed on a value of the wrong data type, preventing the code from executing correctly.
+Example:
+var num = "Hello";
+num.toFixed(2); // TypeError: num.toFixed is not a function

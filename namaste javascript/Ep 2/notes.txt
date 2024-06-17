@@ -1,0 +1,47 @@
+We will learn how javascript code is executed:
+
+when a javascript code is executed a execution context is created, it has 2 phases: 1. memry creatin phases and 2. code execution phases
+
+conside the example,
+ var n = 2;
+ function square(x){
+    var ans = x * x;
+    return ans;
+ }
+ var square1 = square(n);
+
+ here, in first phase javascript will allocate memory for the variables and functions. in case of variable its value will be undefined and for functions whle code is stored(function body).
+ in second phases, code is executed sequentially, it will assign '2' to n in the memory component, then when a new function is called a new execution context is created for it. inside it, siilar process will be performed. fr return statement, it will get the value of 'ans' from te memory and pass it to the global execuiton context, after which this execuiton context will get deleted.
+
+ javascript maintain a call stack to manage and keep track of such execution contexts. whenever a execution context is created it gets pushed to te stack, when it gets done with its job, it is popped out from the stack.
+
+ Polished version of this notes from chat gpt:
+
+ 1. Execution Context:
+
+When JavaScript code is executed, an execution context is created.
+An execution context consists of two phases: the memory creation phase and the code execution phase.
+
+2. Memory Creation Phase:
+
+During this phase, memory is allocated for variables and functions.
+Variables are initialized with the value undefined, while function declarations are stored with their complete code.
+
+3. Code Execution Phase:
+
+In this phase, the code is executed sequentially.
+Values are assigned to variables based on the actual code execution.
+
+4. Example:
+
+You provided an example with variable n, a function square(x), and a call to the function.
+In the memory creation phase, memory is allocated for n, square (function), and square1 (variable).
+In the code execution phase, n is assigned the value 2, and a new execution context is created when square(n) is called.
+Inside the function context, memory is allocated for ans, and the calculation is performed.
+The result is returned to the global execution context, and the function execution context is removed from the stack.
+
+5. Call Stack:
+
+JavaScript maintains a call stack to manage and keep track of execution contexts.
+When a new context is created, it is pushed onto the stack.
+When a context completes its execution, it is popped from the stack.

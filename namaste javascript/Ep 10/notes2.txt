@@ -1,0 +1,1 @@
+practical application of clousures: data hiding and reusability

@@ -1,0 +1,58 @@
+In this epsiode we learned about scope, lexical environment and scope chain:
+
+1. scope: scope refers to context i.e. variable environment of execution context in which variables and functions are defined. it defines their accessiblity within the code.:
+    javascript has mainly two types of scope:
+    Global Scope: Variables and functions declared outside of any function or block have global scope. They are accessible from anywhere in your code.
+    Local Scope: Variables and functions declared inside a function or block have local scope. They are only accessible within that specific function or block.
+
+2. Lexical environemt: it is consist of 2 components : variable environment of current execution context and reference to lexical environemt of parent execution context in which current lexical environemt is present, forming a chain of lexical environemnts called scope chain. so when you reference a variable , javascript will first look for it in the current memory if it is not found then it will look in the memory of parent context and so on. eventually, global execution context refers to a null, meaning variable is not present in the code.
+
+The scope chain ensures that inner scopes can access variables declared in outer scopes, but not vice versa. This concept is known as "lexical scoping" or "static scoping."
+
+
+example:
+
+var b = 3;
+function func1(){                                   
+    function func2(){
+        var d;
+        console.log(b);
+    }
+}
+console.log(d);
+
+here, first javascript will look ofr 'b' in memory component of execution context of func2() then in func1() then in global execution context.
+varaible 'd' is not present in the scope chain hence it will give a reference error.
+so we can say, a varaible is accessible to their child blocks not to their parent blocks.
+
+
+Polished version:
+
+In this episode, we delved into the concepts of scope, lexical environment, and the scope chain:
+
+Scope: Scope refers to the memory component of an execution context in which variables and functions are declared. It defines their accessibility within the code. In JavaScript, there are mainly two types of scope:
+
+Global Scope: Variables and functions declared outside of any function or block have global scope. They are accessible from anywhere in your code.
+
+Local Scope: Variables and functions declared inside a function or block have local scope. They are only accessible within that specific function or block.
+
+Lexical Environment: A lexical environment consists of two components: the memory component of the current execution context and a reference to the lexical environment of the parent execution context. This forms a chain of lexical environments known as the "scope chain." When you reference a variable, JavaScript will first search for it in the current memory. If not found, it will proceed to search in the memory of the parent context and so on. Ultimately, the global execution context refers to null if the variable is not found in the code.
+
+The scope chain ensures that inner scopes can access variables declared in outer scopes, but not the other way around. This concept is commonly referred to as "lexical scoping" or "static scoping."
+
+Example:
+
+var b = 3;
+function func1() {
+    function func2() {
+        var d;
+        console.log(b);
+    }
+}
+console.log(d); // This will result in a reference error.
+
+// In this example, JavaScript first looks for 'b' in the memory component of the execution context of func2(), then in func1(), and finally in the global execution context.
+// Variable 'd' is not present in the scope chain, hence it results in a reference error.
+// Therefore, we can conclude that a variable is accessible to its child blocks but not to its parent blocks.
+
+

@@ -1,0 +1,9 @@
+In this episode we will learn about Hoisting:
+
+Since memory is already allocated for variables and functions even before code execution, so we can access the variables and functions no matter where they have been declared in the code.
+
+also, arrow functions behave like variables so it will give undefined if we try to call it before it's declaration just lke variables.
+
+there is huge diffeence between undefined and not defined:
+undefined: varible is declared and memory has been allocated to it with initially 'undefined'. but value has not been assigned yet.
+not defined: varible is not declared in the actual code.

@@ -1,0 +1,35 @@
+window is a global object which is cretaed along with the global execution context when a web page is loaded. Even if the file is empty.
+window object is used to access the variables and functions present in the memory component of global execution context or global scope.
+it also provides 'this' keyword which is used to reference this window object. i.e. this === window
+
+for example:
+
+var a = 10;
+
+function random(){
+    var x = 2;
+}
+
+console.log(window.a)
+//so here, 'a' is present in the window object but not 'x' since 'x' is not in the global space but in the execution context of function 'random'.
+
+window object also provides varios inbuilt functions such as setTimeOut() and all.
+
+
+Polished notes by chat gpt:
+
+The window object serves as a global object that's created automatically when a web page is loaded, even if the file is empty. It is an essential component of the global execution context and represents the memory component of this context.
+
+One notable feature of the window object is that it provides the this keyword, which refers to the window object itself. In other words, this === window.
+
+Variables and functions declared in the global scope become properties and methods of the window object. For instance:
+
+var a = 10;
+
+function random() {
+    var x = 2;
+}
+
+console.log(window.a);
+// Here, 'a' is accessible as 'window.a,' but 'x' is not because 'x' exists within the execution context of the 'random' function.
+Additionally, the window object offers various built-in functions, such as setTimeout().

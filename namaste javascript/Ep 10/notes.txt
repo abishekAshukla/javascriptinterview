@@ -1,0 +1,21 @@
+when a function is returned from another function, they still retain their lexical scope.
+
+function outerFunction() {
+  const outerVariable = "I am from the outer function";
+
+  function innerFunction() {
+    console.log(outerVariable); // Inner function has access to outerVariable
+  }
+
+  return innerFunction;
+}
+
+const closure = outerFunction(); // Closure now refers to innerFunction
+
+closure(); 
+
+here, when innerfunction was returned, it actually returned that function with it's lexical scope.
+closure = function + that function's lexical scope i.e. a closure is a function along with its lexical scope bundled together.
+
+// https://www.youtube.com/watch?v=sZjlEKbaykc&list=PLKhlp2qtUcSaCVJEt4ogEFs6I41pNnMU5&index=5 from here do question no 3: time optimization
+// do quesiton no 5: how to create a private counter

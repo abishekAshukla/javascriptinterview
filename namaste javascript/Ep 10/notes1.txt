@@ -1,0 +1,39 @@
+Difference in behaviour of let and var in for loop:
+following behaviour is because, 'let' is block scoped and 'var' is funciton scoped.
+
+When you use let in a loop, each iteration of the loop has its own separate i variable with block scope. This means that each iteration creates a new i variable, and changes to the i variable within one iteration do not affect the i variable in other iterations.
+
+In contrast, when you use var in a loop, there is only one i variable that is shared across all iterations. This can lead to unexpected behavior, as changes to the i variable in one iteration can affect the value of i in all iterations and even outside the loop.
+
+Here's an example to illustrate the difference:
+
+Using var:
+
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i); // All iterations share the same 'i'
+  }, 1000);
+}
+since, the callback functions are executed after the for loop has been completely executed, after completion execuiton of the for loop, value of var i is 2, and all of the callbacks are referiing to this same var i since it is functions scoped and shared among all iterations, hence we get 2 2 2.
+
+Using let:
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i); // Each iteration has its own 'i'
+  }, 1000);
+}
+In this example, 
+in case of let, let is block scoped, so for every iteration has its own new block and each of the block has its own individual 'i' variable, after the for loop execuiton the callbacks are refering to diferent individual 'i', hence we get 0 1 2
+
+Q. how to print 0 1 2 with using "var" only? : ue closures
+for(var i = 0; i < 3; i++){
+  function inner(i){
+    //here, it will use local i
+    setTimeout(function() {
+    console.log(i)
+   }, 1);
+  }
+  inner(i);
+}
+so, now inside inner function, we have 2 'i' one is global i and anther is locali, since local get precedence, hence we will get our desired output.
